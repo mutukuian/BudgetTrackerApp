@@ -19,7 +19,7 @@ interface TransactionDao {
     suspend fun insertAccounts(accounts:List<AccountDto>)
 
     @Query("SELECT * FROM transaction_table WHERE entry_date=:entryDate")
-    fun getDailyTransaction(entryDate:String):Flow<List<AccountDto>>
+    fun getDailyTransaction(entryDate:String):Flow<List<TransactionDto>>
 
     @Query("SELECT * FROM transaction_table WHERE account=:accountType")
     fun getTransactionByAccount(accountType:String):Flow<List<TransactionDto>>
