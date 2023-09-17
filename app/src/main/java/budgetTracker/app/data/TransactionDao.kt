@@ -1,4 +1,4 @@
-package budgetTracker.app.data.repository
+package budgetTracker.app.data
 
 import androidx.room.Dao
 import androidx.room.Insert
