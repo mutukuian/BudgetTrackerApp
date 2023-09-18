@@ -9,19 +9,19 @@ import budgetTracker.app.domain.model.Account
 data class AccountDto(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    val id:String,
+    val id: Int,
 
     @ColumnInfo("account")
     val accountType:String,
 
     @ColumnInfo("balance")
-    val balance: Double,
+    var balance: Double,
 
     @ColumnInfo("income")
-    val income: Double,
+    var income: Double,
 
     @ColumnInfo("expense")
-    val expense: Double
+    var expense: Double
 ){
     fun toAccount():Account = Account(
         accountType,

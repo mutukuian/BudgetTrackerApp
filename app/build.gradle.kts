@@ -115,7 +115,7 @@ dependencies {
     implementation("androidx.work:work-runtime-ktx:2.8.1")
 
     // sentry sdk
-    implementation("io.sentry:sentry-android:5.7.3")
+//    implementation("io.sentry:sentry-android:5.7.3")
 
 
     //coroutines

@@ -1,7 +1,6 @@
 package budgetTracker.app.di
 
 import android.content.Context
-import androidx.room.Database
 import androidx.room.Room
 import budgetTracker.app.data.TransactionDao
 import budgetTracker.app.data.TransactionDatabase
