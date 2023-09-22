@@ -17,11 +17,11 @@ import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import budgetTracker.app.R
-import budgetTracker.app.presentation.ui.theme.Red500
 import budgetTracker.app.presentation.util.spacing
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -44,8 +44,8 @@ fun EraseSetting(modalBottomSheetState: ModalBottomSheetState, scope: CoroutineS
                 vertical = MaterialTheme.spacing.small
             ),
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = Red500,
-            contentColor = MaterialTheme.colors.surface
+            backgroundColor = Color.LightGray.copy(alpha = 0.4f),
+            contentColor = Color.Black
         ),
         shape = RoundedCornerShape(12.dp),
         contentPadding = PaddingValues(

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.BudgetTracker" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <bool name="lightNavEnabled">true</bool>
+    <!-- Base application theme. -->
+    <style name="Theme.BudgetTracker" parent="android:Theme.Material.Light.NoActionBar"/>
+
+
+
 </resources>

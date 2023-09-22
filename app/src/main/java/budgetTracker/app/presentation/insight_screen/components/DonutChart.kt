@@ -13,7 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -59,7 +59,7 @@ fun DonutChart(
     }
 
     var startAngle = 270f
-    var activeArc by remember (filteredCategories) { mutableStateOf(-1) }
+    var activeArc by remember (filteredCategories) { mutableIntStateOf(-1) }
 
     BoxWithConstraints(
         contentAlignment = Alignment.Center,
@@ -102,7 +102,7 @@ fun DonutChart(
         ) {
 
             angleProgress.forEachIndexed { index, progress ->
-                DrawDonutArc(
+                drawDonutArc(
                     cat = filteredCategories[index],
                     startAngle = startAngle,
                     sweepAngle = arcPortion.value * (progress - 1f),
@@ -131,7 +131,7 @@ fun DonutChart(
     }
 }
 
-fun DrawScope.DrawDonutArc(
+fun DrawScope.drawDonutArc(
     cat: Category,
     startAngle: Float,
     sweepAngle: Float,
