@@ -32,6 +32,7 @@ import budgetTracker.app.common.Constants
 import budgetTracker.app.domain.model.Transaction
 import budgetTracker.app.presentation.home_screen.Category
 import budgetTracker.app.presentation.home_screen.HomeViewModel
+import budgetTracker.app.presentation.home_screen.IncomeCategory
 import budgetTracker.app.presentation.home_screen.amountFormat
 import budgetTracker.app.presentation.ui.theme.GreenAlpha700
 import budgetTracker.app.presentation.ui.theme.Red500
@@ -47,6 +48,8 @@ fun TransactionItem(
     onItemClick: () -> Unit
 ) {
     val category = getCategory(transaction.category)
+
+
     val currencyCode by homeViewModel.selectedCurrencyCode.collectAsState()
 
     val small = MaterialTheme.spacing.small
@@ -162,9 +165,142 @@ fun TransactionItem(
     }
 }
 
+@ExperimentalMaterialApi
+@ExperimentalUnitApi
+@Composable
+fun TransactionItemIncome(
+    transaction: Transaction,
+    homeViewModel: HomeViewModel = hiltViewModel(),
+    onItemClick: () -> Unit
+) {
+    val incomeCategory = getIncomeCategory(transaction.category)
+
+    val currencyCode by homeViewModel.selectedCurrencyCode.collectAsState()
+
+    val small = MaterialTheme.spacing.small
+    val medium = MaterialTheme.spacing.medium
+
+    Card(
+        onClick = {
+            onItemClick()
+        },
+        backgroundColor = Color.DarkGray.copy(alpha = 0.1f),
+        elevation = 0.dp,
+        shape = RoundedCornerShape(24.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = medium),
+    ) {
+        Column(
+            verticalArrangement = Arrangement.SpaceBetween,
+            horizontalAlignment = Alignment.Start,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(
+                    horizontal = MaterialTheme.spacing.medium,
+                    vertical = MaterialTheme.spacing.small
+                )
+        ) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+
+                Text(
+                    text = incomeCategory.title,
+                    style = MaterialTheme.typography.button,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .background(
+                            incomeCategory.bgRes,
+                            shape = RoundedCornerShape(24.dp)
+                        )
+                        .padding(
+                            vertical = small,
+                            horizontal = medium
+                        ),
+                    color = incomeCategory.colorRes,
+                    letterSpacing = TextUnit(1.1f, TextUnitType.Sp)
+                )
+
+                Text(
+                    text = transaction.account,
+                    style = MaterialTheme.typography.button,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .background(
+                            Color.White,
+                            shape = RoundedCornerShape(24.dp)
+                        )
+                        .padding(
+                            vertical = small,
+                            horizontal = medium
+                        ),
+                    color = Color.Black,
+                    letterSpacing = TextUnit(1.1f, TextUnitType.Sp)
+                )
+
+            }
+
+            Spacer(modifier = Modifier.height(MaterialTheme.spacing.medium))
+
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+
+                Icon(
+                    painter = painterResource(id = incomeCategory.iconRes),
+                    contentDescription = "transaction",
+                    tint = Color.Black,
+                    modifier = Modifier
+                        .background(
+                            Color.DarkGray.copy(alpha = 0.2f),
+                            RoundedCornerShape(8.dp)
+                        )
+                        .padding(18.dp)
+                )
+
+                Column(verticalArrangement = Arrangement.SpaceBetween) {
+                    if (transaction.title.isNotEmpty()) {
+                        Text(
+                            text = transaction.title,
+                            style = MaterialTheme.typography.body2,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+
+                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+                    }
+
+                    Text(
+                        text = currencyCode + "${transaction.amount}".amountFormat(),
+                        color = if (transaction.transactionType == Constants.INCOME)
+                            GreenAlpha700
+                        else Red500.copy(alpha = 0.75f),
+                        style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.W600),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+            }
+        }
+    }
+}
+
 fun getCategory(title: String): Category {
     var result: Category = Category.FOOD_DRINK
     Category.values().forEach {
+        if (it.title == title)
+            result = it
+    }
+    return result
+}
+fun getIncomeCategory(title: String): IncomeCategory {
+    var result: IncomeCategory = IncomeCategory.SALARY
+    IncomeCategory.values().forEach {
         if (it.title == title)
             result = it
     }

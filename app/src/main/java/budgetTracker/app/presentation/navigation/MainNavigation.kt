@@ -13,6 +13,7 @@ import androidx.navigation.navArgument
 import budgetTracker.app.presentation.account_screen.AccountDetailScreen
 import budgetTracker.app.presentation.account_screen.AccountScreen
 import budgetTracker.app.presentation.home_screen.HomeScreen
+import budgetTracker.app.presentation.home_screen.TransactionIncomeScreen
 import budgetTracker.app.presentation.home_screen.TransactionScreen
 import budgetTracker.app.presentation.insight_screen.InsightScreen
 import budgetTracker.app.presentation.setting_screen.SettingScreen
@@ -75,6 +76,35 @@ fun MainNavigation(
             )
         ) { entry ->
             TransactionScreen(
+                navController = navController,
+                transactionTag = entry.arguments?.getInt("tag"),
+                transactionDate = entry.arguments?.getString("trxKey"),
+                transactionPos = entry.arguments?.getInt("trxPos"),
+                transactionStatus = entry.arguments?.getInt("trxStatus")
+            )
+        }
+        composable(route = "${Screen.TransactionIncomeScreen.route}/{tag}?trxKey={trxKey}&trxPos={trxPos}&trxStatus={trxStatus}",
+            arguments = listOf(
+                navArgument("tag") {
+                    type = NavType.IntType
+                    defaultValue = 0
+                },
+                navArgument("trxKey") {
+                    type = NavType.StringType
+                    defaultValue = null
+                    nullable = true
+                },
+                navArgument("trxPos") {
+                    type = NavType.IntType
+                    defaultValue = -1
+                },
+                navArgument("trxStatus") {
+                    type = NavType.IntType
+                    defaultValue = -1
+                }
+            )
+        ) { entry ->
+            TransactionIncomeScreen(
                 navController = navController,
                 transactionTag = entry.arguments?.getInt("tag"),
                 transactionDate = entry.arguments?.getString("trxKey"),

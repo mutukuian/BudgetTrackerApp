@@ -99,17 +99,20 @@ fun HomeScreen(
                             transaction = dailyTransaction,
                             onItemClick = {
                                 val trxType = dailyTransaction.transactionType
-                                if (trxType == TransactionType.INCOME.title)
+                                if (trxType == TransactionType.EXPENSE.title)
                                     navController.navigate(
                                         "${Screen.TransactionScreen.route}/0?trxPos=${pos}&trxStatus=${0}"
                                     )
-                                else
+                                else{
                                     navController.navigate(
-                                        "${Screen.TransactionScreen.route}/1?trxPos=${pos}&trxStatus=${0}"
+                                        "${Screen.TransactionIncomeScreen.route}/1?trxPos=${pos}&trxStatus=${1}"
                                     )
+                                }
+
                             }
                         )
                     }
+
                 }
             }
 
@@ -154,17 +157,20 @@ fun HomeScreen(
                                 transaction = transaction,
                                 onItemClick = {
                                     val trxType = transaction.transactionType
-                                    if (trxType == TransactionType.INCOME.title)
+                                    if (trxType == TransactionType.EXPENSE.title)
                                         navController.navigate(
-                                            "${Screen.TransactionScreen.route}/0?trxKey=${date}&trxPos=${pos}&trxStatus=${1}"
+                                            "${Screen.TransactionScreen.route}/0?trxKey=${date}&trxPos=${pos}&trxStatus=${0}"
                                         )
-                                    else
+                                    else{
                                         navController.navigate(
-                                            "${Screen.TransactionScreen.route}/1?trxKey=${date}&trxPos=${pos}&trxStatus=${1}"
+                                            "${Screen.TransactionIncomeScreen.route}/1?trxPos=${pos}&trxStatus=${1}"
                                         )
+                                    }
+
                                 }
                             )
                         }
+
                     }
                 }
             }
