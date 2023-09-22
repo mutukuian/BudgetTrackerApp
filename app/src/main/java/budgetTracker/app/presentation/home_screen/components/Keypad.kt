@@ -178,7 +178,7 @@ fun KeypadComponent(
             Text(
                 text = "7",
                 style = MaterialTheme.typography.subtitle1.copy(fontSize = 17.sp),
-                color = MaterialTheme.colors.onSurface,
+                color = Color.DarkGray.copy(alpha = 0.75f),
             )
         }
 
@@ -216,7 +216,7 @@ fun KeypadComponent(
             Text(
                 text = "8",
                 style = MaterialTheme.typography.subtitle1.copy(fontSize = 17.sp),
-                color = MaterialTheme.colors.onSurface,
+                color =Color.DarkGray.copy(alpha = 0.75f),
             )
         }
 
@@ -254,7 +254,7 @@ fun KeypadComponent(
             Text(
                 text = "9",
                 style = MaterialTheme.typography.subtitle1.copy(fontSize = 17.sp),
-                color = MaterialTheme.colors.onSurface,
+                color =Color.DarkGray.copy(alpha = 0.75f),
             )
         }
 
@@ -333,7 +333,7 @@ fun KeypadComponent(
             Text(
                 text = "4",
                 style = MaterialTheme.typography.subtitle1.copy(fontSize = 17.sp),
-                color = MaterialTheme.colors.onSurface,
+                color = Color.DarkGray.copy(alpha = 0.75f),
             )
         }
 
@@ -371,7 +371,7 @@ fun KeypadComponent(
             Text(
                 text = "5",
                 style = MaterialTheme.typography.subtitle1.copy(fontSize = 17.sp),
-                color = MaterialTheme.colors.onSurface,
+                color = Color.DarkGray.copy(alpha = 0.75f),
             )
         }
 
@@ -409,7 +409,7 @@ fun KeypadComponent(
             Text(
                 text = "6",
                 style = MaterialTheme.typography.subtitle1.copy(fontSize = 17.sp),
-                color = MaterialTheme.colors.onSurface,
+                color = Color.DarkGray.copy(alpha = 0.75f),
             )
         }
 
@@ -492,7 +492,7 @@ fun KeypadComponent(
             Text(
                 text = "1",
                 style = MaterialTheme.typography.subtitle1.copy(fontSize = 17.sp),
-                color = MaterialTheme.colors.onSurface,
+                color = Color.DarkGray.copy(alpha = 0.75f),
             )
         }
 
@@ -530,7 +530,7 @@ fun KeypadComponent(
             Text(
                 text = "2",
                 style = MaterialTheme.typography.subtitle1.copy(fontSize = 17.sp),
-                color = MaterialTheme.colors.onSurface,
+                color = Color.DarkGray.copy(alpha = 0.75f),
             )
         }
 
@@ -568,7 +568,7 @@ fun KeypadComponent(
             Text(
                 text = "3",
                 style = MaterialTheme.typography.subtitle1.copy(fontSize = 17.sp),
-                color = MaterialTheme.colors.onSurface,
+                color = Color.DarkGray.copy(alpha = 0.75f),
             )
         }
 
@@ -608,7 +608,7 @@ fun KeypadComponent(
             Text(
                 text = "0",
                 style = MaterialTheme.typography.subtitle1.copy(fontSize = 17.sp),
-                color = MaterialTheme.colors.onSurface,
+                color = Color.DarkGray.copy(alpha = 0.75f),
             )
         }
 
@@ -648,7 +648,7 @@ fun KeypadComponent(
                 text = ".",
                 style = MaterialTheme.typography.subtitle1.copy(fontSize = 17.sp),
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colors.onSurface,
+                color = Color.DarkGray.copy(alpha = 0.75f),
             )
         }
 

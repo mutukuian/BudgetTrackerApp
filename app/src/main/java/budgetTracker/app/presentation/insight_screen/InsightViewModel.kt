@@ -37,7 +37,7 @@ class InsightViewModel @Inject constructor(
     val filteredTransaction: StateFlow<List<Transaction>> = _filteredTransaction
 
     var selectedCurrencyCode = MutableStateFlow(String())
-        private set
+//        private set
 
     fun selectTabButton(tab: TransactionType) {
         _tabButton.value = tab
