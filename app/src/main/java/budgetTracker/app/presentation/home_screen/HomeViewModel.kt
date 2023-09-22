@@ -24,6 +24,7 @@ import budgetTracker.app.domain.use_case.write_database.InsertAccountsUseCase
 import budgetTracker.app.domain.use_case.write_database.InsertNewTransactionUseCase
 import budgetTracker.app.presentation.ui.theme.businessBg
 import budgetTracker.app.presentation.ui.theme.clothBg
+import budgetTracker.app.presentation.ui.theme.corporationBg
 import budgetTracker.app.presentation.ui.theme.electricBg
 import budgetTracker.app.presentation.ui.theme.food_drink
 import budgetTracker.app.presentation.ui.theme.gadgetBg
@@ -34,6 +35,7 @@ import budgetTracker.app.presentation.ui.theme.homeBg
 import budgetTracker.app.presentation.ui.theme.leisureBg
 import budgetTracker.app.presentation.ui.theme.miscBg
 import budgetTracker.app.presentation.ui.theme.petBg
+import budgetTracker.app.presentation.ui.theme.salary
 import budgetTracker.app.presentation.ui.theme.schBg
 import budgetTracker.app.presentation.ui.theme.snackBg
 import budgetTracker.app.presentation.ui.theme.subBg
@@ -51,7 +53,8 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.text.DecimalFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Date
 import javax.inject.Inject
 
 
@@ -82,6 +85,7 @@ class HomeViewModel @Inject constructor(
         private set
 
     var category = MutableStateFlow(Category.FOOD_DRINK)
+    var incomeCategory = MutableStateFlow(IncomeCategory.SALARY)
         private set
 
     var account = MutableStateFlow(Account.CASH)
@@ -215,6 +219,9 @@ class HomeViewModel @Inject constructor(
 
     fun selectCategory(category: Category) {
         this.category.value = category
+    }
+    fun selectIncomeCategory(incomeCategory: IncomeCategory) {
+        this.incomeCategory.value = incomeCategory
     }
 
     fun selectAccount(account: Account) {
@@ -480,6 +487,8 @@ enum class Category(
     val colorRes: Color = Color.White
 ) {
     FOOD_DRINK("Food & Drink", R.drawable.drink, food_drink, Color.Black),
+    TAXES("Taxes", R.drawable.baseline_money_off_24, miscBg),
+    HOUSE_HELP("House Help", R.drawable.baseline_help_24, miscBg),
     CLOTHING("Clothing", R.drawable.clothing, clothBg, Color.Black),
     HOME("Home", R.drawable.home, homeBg, Color.Black),
     HEALTH("Health", R.drawable.health, healthBg),
@@ -497,4 +506,21 @@ enum class Category(
     SNACK("Snack", R.drawable.snack, snackBg, Color.Black),
     GIFT("Gift", R.drawable.gift, giftBg, Color.Black),
     MISC("Miscellaneous", R.drawable.misc, miscBg)
+
+}
+
+
+enum class IncomeCategory(
+    val title: String,
+    val iconRes: Int,
+    val bgRes: Color,
+    val colorRes: Color = Color.White
+
+){
+    SALARY("Salary", R.drawable.baseline_attach_money_24, salary, Color.Black),
+    BUSINESS("Business", R.drawable.business, businessBg, Color.Black),
+    OVERTIME_PAY("OverTime Pay", R.drawable.baseline_more_time_24, homeBg, Color.Black),
+    CORPORATIONS("Corporations", R.drawable.baseline_organisation_24, corporationBg),
+    LIMITED_LIABILITY_COMPANIES("Limited Liability Companies", R.drawable.baseline_factory_24, healthBg),
+    OTHERS("Others", R.drawable.misc, healthBg),
 }

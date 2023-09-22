@@ -66,7 +66,7 @@ fun AddEntryChooser(
             IconButton(
                 onClick = {
                     scope.launch { bottomSheetScaffoldState.bottomSheetState.collapse() }
-                    navController.navigate("${Screen.TransactionScreen.route}/0")
+                    navController.navigate("${Screen.TransactionIncomeScreen.route}/0")
                 }
             ) {
                 Icon(
