@@ -13,7 +13,7 @@ import budgetTracker.app.data.local_database.entity.TransactionDto
     TransactionDto::class,
     AccountDto::class
     ],
-    exportSchema = true,
+    exportSchema = false,
     version = 1
 )
 abstract class TransactionDatabase:RoomDatabase() {
