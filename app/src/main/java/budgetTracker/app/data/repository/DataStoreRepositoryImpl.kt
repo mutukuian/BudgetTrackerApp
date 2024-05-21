@@ -1,5 +1,6 @@
 package budgetTracker.app.data.repository
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -100,6 +101,7 @@ class DataStoreRepositoryImpl @Inject constructor(
         }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     override suspend fun readLimitDurationFromDataStore(): Flow<Int> {
       val preferences = datastore.data
         return flow {
